@@ -29,35 +29,35 @@ Represents a comment made on an auction listing and contains the following field
 - `commenter`: Foreign key reference to the user who made the comment.
 - `content`: The text content of the comment.
 
-> Note: You may have additional models depending on your specific requirements.
+> Note: You can change it lol.
 
 ## Features
 
-- **Create Listing**: Users can visit a page to create a new listing by providing a title, description, starting bid, optional image URL, and category.
+- **Create Listing**: Users have the ability to create new auction listings by providing essential details such as title, description, starting bid, and optional information like image URL and category selection.
+- 
+- **Active Listings Page**: The default route presents users with a comprehensive view of all currently active auction listings. Each listing showcases key information such as title, description, current price, and, if available, an associated photo.
 
-- **Active Listings Page**: The default route allows users to view all currently active auction listings. Each listing displays the title, description, current price, and associated photo (if available).
+- **Listing Page**: Clicking on a specific listing leads users to a dedicated page that provides comprehensive details about the listing, including the current price and other relevant information.
 
-- **Listing Page**: Clicking on a listing takes users to a specific page for that listing. Here, users can view all the details of the listing, including the current price.
+- **Watchlist**: Signed-in users can curate their personalized watchlist by adding and removing listings according to their preferences. The watchlist page showcases all the listings that a user has added, and clicking on any listing redirects the user to its respective page.
 
-- **Watchlist**: Signed-in users can add listings to their watchlist and remove them if they are already added. The watchlist page displays all the listings that a user has added, and clicking on any listing takes the user to its respective page.
+- **Bidding**: Authenticated users can participate in the bidding process by placing bids on auction listings. The bid amount must be equal to or higher than the starting bid and any existing bids. Users are promptly notified and presented with an error if the bid does not meet these criteria.
 
-- **Bidding**: Signed-in users can place bids on auction listings. The bid must be equal to or higher than the starting bid and any existing bids. Users are presented with an error if the bid does not meet these criteria.
+- **Closing Auction**: Listing creators who are signed in have the privilege to "close" auctions directly from the listing page. This action determines the highest bidder as the winner and marks the listing as inactive.
 
-- **Closing Auction**: If the user who created the listing is signed in, they have the ability to "close" the auction from the listing page. This action makes the highest bidder the winner and makes the listing inactive.
+- **Winning Status**: On a closed listing page, if a signed-in user emerges as the winner of the auction, their winning status is prominently displayed.
 
-- **Winning Status**: On a closed listing page, if a signed-in user has won the auction, the page indicates their winning status.
+- **Comments**: Authenticated users can engage in discussions and provide comments on listing pages. All comments made by users on a listing are dynamically displayed on the page, facilitating interaction and conversation.
 
-- **Comments**: Signed-in users can add comments to listing pages, and all comments made on a listing are displayed on the page.
+- **Categories**: Users can explore a dedicated page that showcases a comprehensive list of all available listing categories. Clicking on a specific category directs the user to a page displaying all active listings within that category.
 
-- **Categories**: Users can visit a page that displays a list of all listing categories. Clicking on a category name takes the user to a page showing all active listings in that category.
-
-- **Django Admin Interface**: The Django admin interface allows site administrators to view, add, edit, and delete listings, comments, and bids made on the site.
+- **Django Admin Interface**: The Django admin interface empowers site administrators with extensive capabilities to manage the platform effectively. Administrators can effortlessly view, add, edit, and delete listings, comments, and bids within the system.
 
 ## How to Run in VSC
 To run the Project-Auctions web app in Visual Studio Code (VSC), follow these steps:
 
 1. Make a virtual environment by executing the following command in your terminal:
-  python3 -m venv venv
+  - **python3 -m venv venv**
 
 2. Activate the virtual environment by running the appropriate command based on your operating system:
    - **Windows**:
