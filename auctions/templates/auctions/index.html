@@ -1,0 +1,49 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    Active Listings - Auctions
+{% endblock %}
+
+{% block content %}
+    <div class="container scroll-container">
+        <h2>Active Listings</h2>
+
+        <form class="category-form" action="{% url 'index' %}" method="get">
+            <label for="category">Filter by Category:</label>
+            <select id="category" name="category" class="form-select">
+                <option value="" {% if not selected_category %}selected{% endif %}>All Categories</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}" {% if selected_category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.category_name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+
+        {% if listings %}
+            <div class="card-container row row-cols-1 row-cols-md-2 row-cols-lg-4">
+                {% for listing in listings %}
+                    <div class="col mb-4">
+                        <div class="card" style="width: 18rem;">
+                            {% if listing.image_url %}
+                                <img src="{{ listing.image_url }}" class="card-img-top card-image" alt="{{ listing.title }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ listing.title }}</h5>
+                                <p class="card-text">{{ listing.description }}</p>
+                                <p class="card-text">Price:
+                                    {% if listing.current_bid %}
+                                        ${{ listing.current_bid.amount }}
+                                    {% else %}
+                                        ${{ listing.starting_bid }}
+                                    {% endif %}</p>
+                                <a href="{% url 'listing' listing_id=listing.id %}" class="btn btn-primary">See product</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No active listings found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

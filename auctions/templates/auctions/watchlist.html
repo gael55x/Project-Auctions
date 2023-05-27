@@ -1,0 +1,26 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    Watchlist - Auctions
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Watchlist</h2>
+    {% if watchlist_items %}
+        <ul class="list-group mt-2">
+            {% for item in watchlist_items %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{% url 'listing' listing_id=item.id %}">{{ item.title }}</a>
+                    <form action="{% url 'remove_from_watchlist' listing_id=item.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Remove from Watchlist</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Your watchlist is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
